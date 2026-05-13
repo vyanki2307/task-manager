@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- AUTH SECTION -->
+  <div id="auth-section">
+    <div class="auth-box">
+      <h1>Task Manager</h1>
+      <div class="auth-tabs">
+        <button class="tab-btn active" onclick="showTab('login')">Login</button>
+        <button class="tab-btn" onclick="showTab('register')">Register</button>
+      </div>
+
+      <!-- LOGIN -->
+      <div id="login-tab">
+        <input id="login-username" type="text" placeholder="Username" />
+        <input id="login-password" type="password" placeholder="Password" />
+        <button class="primary-btn" onclick="login()">Login</button>
+        <p id="login-message"></p>
+      </div>
+
+      <!-- REGISTER -->
+      <div id="register-tab" style="display:none">
+        <input id="reg-username" type="text" placeholder="Username" />
+        <input id="reg-password" type="password" placeholder="Password" />
+        <button class="primary-btn" onclick="register()">Register</button>
+        <p id="register-message"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD SECTION -->
+  <div id="dashboard-section" style="display:none">
+
+    <!-- NAVBAR -->
+    <nav>
+      <h2>Task Manager</h2>
+      <div>
+        <span id="welcome-text"></span>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+      </div>
+    </nav>
+
+    <!-- STATS -->
+    <div class="stats-container">
+      <div class="stat-card">
+        <p class="stat-number" id="total-tasks">0</p>
+        <p class="stat-label">Total Tasks</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-number" id="pending-tasks">0</p>
+        <p class="stat-label">Pending</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-number" id="inprogress-tasks">0</p>
+        <p class="stat-label">In Progress</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-number" id="completed-tasks">0</p>
+        <p class="stat-label">Completed</p>
+      </div>
+    </div>
+
+    <!-- ADD TASK FORM -->
+    <div class="form-section">
+      <h3>Add New Task</h3>
+      <div class="form-row">
+        <input id="task-title" type="text" placeholder="Task title" />
+        <input id="task-description" type="text" placeholder="Description" />
+        <select id="task-priority">
+          <option value="low">Low Priority</option>
+          <option value="medium" selected>Medium Priority</option>
+          <option value="high">High Priority</option>
+        </select>
+        <button class="primary-btn" onclick="addTask()">+ Add Task</button>
+      </div>
+      <p id="task-message"></p>
+    </div>
+
+    <!-- FILTER -->
+    <div class="filter-section">
+      <button class="filter-btn active" onclick="filterTasks('all')">All</button>
+      <button class="filter-btn" onclick="filterTasks('pending')">Pending</button>
+      <button class="filter-btn" onclick="filterTasks('inprogress')">In Progress</button>
+      <button class="filter-btn" onclick="filterTasks('completed')">Completed</button>
+    </div>
+
+    <!-- TASKS LIST -->
+    <div id="tasks-container"></div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
